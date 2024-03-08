@@ -17,7 +17,7 @@ def choose_word():
              "spanish", "German", "english", "favorite", "hatred", "love"]
     return random.choice(words)
 
-def display_word(word, guessed_letters):
+def display_word(word, guessed_letters):  #This function generates and returns a string representing the player's progress in guessing a word
     display = ""
     for letter in word:
         if letter in guessed_letters:
@@ -110,11 +110,11 @@ def hangman():
         print("\nWord:", display_word(word, guessed_letters))
         guess = input("Enter a letter: ").lower()
 
-        if len(guess) != 1 or not guess.isalpha():
+        if len(guess) != 1 or not guess.isalpha():        #asks the player to enter a guess and ensures it's a single alphabetic character
             print("Please enter a single letter.")
             continue
 
-        if guess in guessed_letters:
+        if guess in guessed_letters:  #If the guessed letter has already been guessed then it says say another one
             print("You've already guessed that letter.")
             continue
 
@@ -127,7 +127,7 @@ def hangman():
                 break
         else:
             print("Incorrect guess!")
-            print(hangman_images[len(hangman_images) - attempts])  # Print the corresponding hangman image depending on the level choosen
+            print(hangman_images[len(hangman_images) - attempts])  # Print the corresponding hangman image
             attempts -= 1
             print("Attempts remaining:", attempts)
 
